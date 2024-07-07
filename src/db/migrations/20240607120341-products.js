@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      urlImage: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       price: {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
@@ -24,6 +28,17 @@ module.exports = {
       stock: {
         type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      deletedAt: {
+        type: Sequelize.DATE,
       },
     });
   },
