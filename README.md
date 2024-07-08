@@ -8,17 +8,17 @@ Requisitos:
 
 - [Node.js >= 18](https://nodejs.org/en)
 
-- Variáveis de ambiente:
-  [PORT=3001]
-  [NODE_ENV=development]
-  [JWT_SECRET_KEY=yoursecret]
-  [JWT_EXPIRES_IN=1d]
+Variáveis de ambiente:
 
-[DB_NAME=]
-[DB_HOST=]
-[DB_USERNAME=]
-[DB_PASSWORD=]
-[DB_PORT=5432]
+- [PORT=3001]
+- [NODE_ENV=development]
+- [JWT_SECRET_KEY=yoursecret]
+- [JWT_EXPIRES_IN=1d]
+- [DB_NAME=]
+- [DB_HOST=]
+- [DB_USERNAME=]
+- [DB_PASSWORD=]
+- [DB_PORT=5432]
 
 Clone o projeto
 
