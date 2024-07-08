@@ -7,14 +7,16 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
+  deleteAllProducts,
 } = require("../controllers/product.controller");
-const { deleteAllProducts } = require("../services/product.services");
+
+const auth = require("../middlewares/auth");
 
 router
-  .get("/products", getProducts)
-  .post("/products", createProduct)
-  .patch("/products/:id", updateProduct)
-  .delete("/products/:id", deleteProduct)
-  .delete("/products/delete/all", deleteAllProducts);
+  .get("/products", auth, getProducts)
+  .post("/products", auth, createProduct)
+  .patch("/products/:id", auth, updateProduct)
+  .delete("/products/:id", auth, deleteProduct)
+  .delete("/products/delete/all", auth, deleteAllProducts);
 
 module.exports = router;
