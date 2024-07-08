@@ -22,6 +22,7 @@ const signIn = async ({ email, password }) => {
 
   if (!user) throw new Error("Email or passowrd incorrects!");
   user.token = token(email, password);
+
   return user;
 };
 
@@ -35,6 +36,7 @@ const signUp = async ({ email, password }) => {
     createdAt: new Date(),
     updatedAt: new Date(),
   });
+
   return newUser;
 };
 
