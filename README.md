@@ -121,8 +121,8 @@ https://la-api.vercel.app/
 
 ## Melhorias
 
--Validar dados de entrada nas requisições
--Incluir testes unitários
+- Validar dados de entrada nas requisições
+- Incluir testes unitários
 
 ## Licença
 
