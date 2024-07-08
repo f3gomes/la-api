@@ -20,7 +20,51 @@ const createProduct = async (req, res) => {
   }
 };
 
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+
+  try {
+    const product = await productServices.updateProduct(body, id);
+
+    return res
+      .status(200)
+      .json({ message: "Successfully updated product", product });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const destroyed = await productServices.deleteProduct(id);
+
+    return res
+      .status(200)
+      .json({ message: "Successfully deleted product", destroyed });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
+const deleteAllProducts = async (req, res) => {
+  try {
+    const destroyed = await productServices.deleteAllProducts();
+
+    return res
+      .status(200)
+      .json({ message: "Successfully deleted product", destroyed });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getProducts,
   createProduct,
+  updateProduct,
+  deleteProduct,
+  deleteAllProducts,
 };
