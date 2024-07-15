@@ -20,7 +20,7 @@ const signIn = async ({ email, password }) => {
     attributes: { exclude: ["password"] },
   });
 
-  if (!user) throw new Error("Email or passowrd incorrects!");
+  if (!user) throw new Error("Email or password incorrects!");
   user.token = token(email, password);
 
   return user;
@@ -28,6 +28,7 @@ const signIn = async ({ email, password }) => {
 
 const signUp = async ({ email, password }) => {
   const user = await User.findOne({ where: { email } });
+
   if (user) throw new Error("There is already an account with that email!");
 
   const newUser = await User.create({
