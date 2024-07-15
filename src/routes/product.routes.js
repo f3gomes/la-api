@@ -18,7 +18,7 @@ router
   .get("/products", auth, getProducts)
   .get("/products/:id", auth, getProductById)
   .post("/products", auth, validate(productSchema), createProduct)
-  .patch("/products/:id", auth, validate(productSchema), updateProduct)
+  .patch("/products/:id", auth, updateProduct)
   .delete("/products/:id", auth, deleteProduct)
   .delete("/products/delete/all", auth, deleteAllProducts);
 
