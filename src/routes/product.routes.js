@@ -11,11 +11,12 @@ const {
 } = require("../controllers/product.controller");
 
 const auth = require("../middlewares/auth");
+const { validate, productSchema } = require("../middlewares/validation");
 
 router
   .get("/products", auth, getProducts)
-  .post("/products", auth, createProduct)
-  .patch("/products/:id", auth, updateProduct)
+  .post("/products", auth, validate(productSchema), createProduct)
+  .patch("/products/:id", auth, validate(productSchema), updateProduct)
   .delete("/products/:id", auth, deleteProduct)
   .delete("/products/delete/all", auth, deleteAllProducts);
 
