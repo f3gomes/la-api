@@ -26,10 +26,16 @@ const createProduct = async (productData) => {
   }
 };
 
-const updateProduct = async (body, id) => {
-  const result = await Product.update(body, { where: { id: Number(id) } });
+const getProductById = async (id) => {
+  const product = await Product.findAll({ where: { id: Number(id) } });
 
-  return result;
+  return product;
+};
+
+const updateProduct = async (body, id) => {
+  const product = await Product.update(body, { where: { id: Number(id) } });
+
+  return product;
 };
 
 const deleteProduct = async (id) => {
@@ -50,6 +56,7 @@ const deleteAllProducts = async () => {
 
 module.exports = {
   getAllProducts,
+  getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
