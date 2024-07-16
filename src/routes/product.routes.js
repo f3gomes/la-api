@@ -9,6 +9,7 @@ const {
   deleteProduct,
   deleteAllProducts,
   getProductById,
+  loadProducts,
 } = require("../controllers/product.controller");
 
 const auth = require("../middlewares/auth");
@@ -18,6 +19,7 @@ router
   .get("/products", auth, getProducts)
   .get("/products/:id", auth, getProductById)
   .post("/products", auth, validate(productSchema), createProduct)
+  .patch("/load/products", auth, loadProducts)
   .patch("/products/:id", auth, updateProduct)
   .delete("/products/:id", auth, deleteProduct)
   .delete("/products/delete/all", auth, deleteAllProducts);

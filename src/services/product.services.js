@@ -1,7 +1,11 @@
+const { Op } = require("sequelize");
 const { Product } = require("../db/models");
 
 const getAllProducts = async () => {
-  const products = await Product.findAll({ order: ["id"] });
+  const products = await Product.findAll({
+    where: { deletedAt: { [Op.is]: null } },
+    order: [["id", "ASC"]],
+  });
 
   return products;
 };
@@ -38,10 +42,19 @@ const updateProduct = async (body, id) => {
   return product;
 };
 
+const loadProducts = async () => {
+  const products = await Product.update({ deletedAt: null }, { where: {} });
+
+  return products;
+};
+
 const deleteProduct = async (id) => {
-  const destroyed = await Product.destroy({
-    where: { id },
-  });
+  const destroyed = await Product.update(
+    { deletedAt: new Date() },
+    {
+      where: { id },
+    }
+  );
 
   if (!destroyed) throw new Error("Product not found");
 
@@ -49,7 +62,10 @@ const deleteProduct = async (id) => {
 };
 
 const deleteAllProducts = async () => {
-  const destroyed = await Product.destroy({ where: {} });
+  const destroyed = await Product.update(
+    { deletedAt: new Date() },
+    { where: {} }
+  );
 
   return destroyed;
 };
@@ -60,5 +76,6 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  loadProducts,
   deleteAllProducts,
 };

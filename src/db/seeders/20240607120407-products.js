@@ -1,13 +1,14 @@
 "use strict";
 
 const generateRandomProduct = (number) => {
-  const name = `Moto G ${number}0`;
+  const name = `Moto G ${number}`;
   const brand = "Motorola";
   const price = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
   const stock = 10;
   const urlImage = "https://i.zst.com.br/thumbs/12/f/19/-797867416.jpg";
   const createdAt = new Date();
   const updatedAt = new Date();
+  const deletedAt = new Date();
 
   return {
     name,
@@ -17,6 +18,7 @@ const generateRandomProduct = (number) => {
     urlImage,
     createdAt,
     updatedAt,
+    deletedAt,
   };
 };
 

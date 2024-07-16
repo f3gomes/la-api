@@ -14,9 +14,9 @@ const options = {
   },
   dialectOptions: {
     timezone: "Z",
-    ssl: {
-      require: true,
-    },
+    // ssl: {
+    //   require: true,
+    // },
   },
   logging: false,
 };

@@ -91,6 +91,18 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const loadProducts = async (req, res) => {
+  try {
+    const products = await productServices.loadProducts();
+
+    return res
+      .status(200)
+      .json({ message: "Successfully loaded products", products });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
 const deleteAllProducts = async (req, res) => {
   try {
     const destroyed = await productServices.deleteAllProducts();
@@ -109,5 +121,6 @@ module.exports = {
   updateProduct,
   deleteProduct,
   getProductById,
+  loadProducts,
   deleteAllProducts,
 };
