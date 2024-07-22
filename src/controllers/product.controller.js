@@ -10,21 +10,6 @@ const getProducts = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const values = Object.values(req.body);
-  let minValue = false;
-
-  values.forEach((item) => {
-    if (item === "") {
-      minValue = true;
-    }
-  });
-
-  if (minValue) {
-    return res.status(400).json({
-      message: "You must type at least one character in every fields",
-    });
-  }
-
   try {
     const newProduct = await productServices.createProduct(req.body);
     return res
@@ -50,21 +35,6 @@ const getProductById = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { id } = req.params;
   const body = req.body;
-
-  const values = Object.values(body);
-  let minValue = false;
-
-  values.forEach((item) => {
-    if (item === "") {
-      minValue = true;
-    }
-  });
-
-  if (minValue) {
-    return res.status(400).json({
-      message: "You must type at least one character in every fields",
-    });
-  }
 
   try {
     const product = await productServices.updateProduct(body, id);

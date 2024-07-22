@@ -20,7 +20,7 @@ router
   .get("/products/:id", auth, getProductById)
   .post("/products", auth, validate(productSchema), createProduct)
   .patch("/load/products", loadProducts)
-  .patch("/products/:id", auth, updateProduct)
+  .patch("/products/:id", auth, validate(productSchema), updateProduct)
   .delete("/products/:id", auth, deleteProduct)
   .delete("/products/delete/all", auth, deleteAllProducts);
 
